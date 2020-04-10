@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import TextEditor from './Editor';
-import axios from 'axios';
 
 test('should display text props content when created with it', () => {
   const {getByText} = render(<TextEditor text="Testing123"/>);

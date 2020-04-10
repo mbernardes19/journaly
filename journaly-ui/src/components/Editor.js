@@ -1,22 +1,14 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Editor, EditorState, convertToRaw } from 'draft-js';
 import './Editor.css';
 import journalEntryApi from '../api/journalEntryApi'
+import {SERVER_ERROR_MESSAGE} from '../Messages'
+import NotifyService from '../services/NotifyService'
 
-function TextEditor(props) {
-    const [editorState, setEditorState] = React.useState(EditorState.createEmpty());
+function TextEditor() {
+    const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
     const editor = React.useRef(null);
-
-    const _focusEditor = () => {
-        editor.current.focus();
-    }
-
-    const saveContent = () => {
-        const contentState = editorState.getCurrentContent(); 
-        const content = _contentStateToString(convertToRaw(contentState))
-        journalEntryApi.saveJournalEntry(content);
-    }
 
     const _contentStateToString = (contentState) => {
         let contentStateString = "";
@@ -24,6 +16,22 @@ function TextEditor(props) {
             contentStateString += block.text;
         })
         return contentStateString;
+    }
+
+    const _focusEditor = () => {
+        editor.current.focus();
+    }
+
+    const saveContent = async () => {
+        const contentState = editorState.getCurrentContent(); 
+        const content = _contentStateToString(convertToRaw(contentState))
+        try {
+            await journalEntryApi.saveJournalEntry(content);
+            NotifyService.notifySuccess();
+        } catch(e) {
+            NotifyService.notifyError();
+            console.error(SERVER_ERROR_MESSAGE);
+        }
     }
 
     return (
