@@ -1,9 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import './App.css';
-import TextEditor from './components/Editor';
-import Navbar from './components/Navbar';
-import Notify from './components/Notify';
-import EventEmitter from './EventEmitter';
+import TextEditor from './components/Editor/Editor';
+import Navbar from './components/Navbar/Navbar';
+import Notify from './components/Notify/Notify';
 
 function App() {
   return (
@@ -11,7 +10,8 @@ function App() {
       <Navbar/>
       <p class="header-text">Create an entry for today</p>
       <TextEditor/>
-      <Notify/>
+
+      <Notify position="right"/>
     </div>
   );
 }

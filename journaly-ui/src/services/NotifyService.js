@@ -1,5 +1,5 @@
-import EventEmitter from '../EventEmitter'
-import {SAVED_SUCCESSFULLY_MESSAGE, SERVER_ERROR_MESSAGE} from '../Messages';
+import EventEmitter from '../utils/EventEmitter'
+import {SAVED_SUCCESSFULLY_MESSAGE, SERVER_ERROR_MESSAGE} from '../utils/Messages';
 
 const NotifyService = {
     notifySuccess: () => {

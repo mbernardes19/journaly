@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { Editor, EditorState, convertToRaw } from 'draft-js';
 import './Editor.css';
-import journalEntryApi from '../api/journalEntryApi'
-import {SERVER_ERROR_MESSAGE} from '../Messages'
-import NotifyService from '../services/NotifyService'
+import journalEntryApi from '../../api/journalEntryApi'
+import {SERVER_ERROR_MESSAGE} from '../../utils/Messages'
+import NotifyService from '../../services/NotifyService'
 
 function TextEditor() {
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
