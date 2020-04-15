@@ -9,9 +9,6 @@ function Navbar() {
                 <li>
                     <Link to="/"> <h1 className="nav-header">Journaly</h1> </Link>
                 </li>
-                <li>
-                    <Link to="/entries"> <h3 className="nav-item">Entries</h3> </Link>
-                </li>
             </ul>
         </nav>
     );

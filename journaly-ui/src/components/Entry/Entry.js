@@ -7,7 +7,7 @@ const Entry = ({content, date}) => {
 
     return (
         <div className="entry">
-            <h3 className="entry-header">{formatedDate}</h3>
+            <h5 className="entry-header">{formatedDate}</h5>
             <p className="entry-content">{content}</p>
         </div>
     );

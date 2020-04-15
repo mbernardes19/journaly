@@ -3,6 +3,7 @@ import './Home.css';
 import TextEditor from '../components/Editor/Editor';
 import Notify from '../components/Notify/Notify';
 import EventEmitter from '../utils/EventEmitter'
+import Entries from '../components/Entries/Entries'
 
 function Home() {
   const [data, setData] = useState({})
@@ -13,9 +14,10 @@ function Home() {
 
   return (
     <div>
-      <p class="header-text">Create an entry for today</p>
+      <p className="header-text">Create an entry for today</p>
       <TextEditor/>
       <Notify data={data} position="right"/>
+      <Entries/>
     </div>
   );
 }

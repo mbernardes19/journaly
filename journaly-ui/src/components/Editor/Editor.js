@@ -4,6 +4,7 @@ import './Editor.css';
 import journalEntryApi from '../../api/journalEntryApi'
 import {SERVER_ERROR_MESSAGE} from '../../utils/Messages'
 import NotifyService from '../../services/NotifyService'
+import EventEmitter from '../../utils/EventEmitter';
 
 function TextEditor({content}) {
 
@@ -33,9 +34,13 @@ function TextEditor({content}) {
         const contentState = editorState.getCurrentContent(); 
         const content = _contentStateToString(convertToRaw(contentState))
         try {
-            await journalEntryApi.saveJournalEntry({content: content, date: new Date().toISOString()});
+            const newJournalEntry = {content: content, date: new Date().toISOString()}
+            await journalEntryApi.saveJournalEntry(newJournalEntry);
             NotifyService.notifySuccess();
+            EventEmitter.dispatch('updateJournalEntries', true)
+            setEditorState(EditorState.createEmpty())
         } catch(e) {
+            console.error(e)
             NotifyService.notifyError();
             console.error(SERVER_ERROR_MESSAGE);
         }

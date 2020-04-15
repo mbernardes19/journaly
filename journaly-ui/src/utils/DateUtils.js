@@ -4,7 +4,12 @@ export const _convertDate = (dateString) => {
     const day = dateObj.getDate();
     const year = dateObj.getFullYear();
     const termination = _getDayTermination(dateObj.getDate());
-    return `${month} ${day}${termination}, ${year}`
+    const reg = new RegExp(/(?<= )(\d*):(\d*):\d* (\D*)/gm)
+    const time = reg.exec(dateObj.toLocaleString());
+    const hour = time[1]
+    const minutes = time[2]
+    const timePeriod = time[3]
+    return `${month} ${day}${termination}, ${year}, ${hour}:${minutes} ${timePeriod}`
 }
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];

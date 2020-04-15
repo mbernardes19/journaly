@@ -6,6 +6,6 @@ exports.saveJournalEntry = async ({content, date}) => {
     });
 } 
 
-exports.deleteJournal = (journalEntry) => {
-    
+exports.getAllJournalEntries = async () => {
+    return fetch(process.env.REACT_APP_API_URL+"/entries")
 } 
