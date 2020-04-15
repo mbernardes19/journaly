@@ -3,7 +3,6 @@
 }
 
 .editor-container {
-    width: 90%;
     height: 200px;
     border: 1px solid black;
     cursor: text;
@@ -19,14 +18,12 @@
   }
   
   .button-wrapper {
-    width: 90%;
     display: flex;
     justify-content: flex-end;
     margin-top: 10px;
   }
 
   .notify-wrapper {
-    width: 90%;
     display: flex;
     justify-content: flex-end;
     margin-top: 10px;

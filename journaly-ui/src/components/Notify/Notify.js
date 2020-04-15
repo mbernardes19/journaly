@@ -1,14 +1,7 @@
-import React, {useState, useEffect} from 'react';
-import EventEmitter from '../../utils/EventEmitter';
+import React from 'react';
 import './Notify.css';
 
-const Notify = ({position}) => {
-    const [data, setData] = useState({})
-
-    useEffect(() => {
-        EventEmitter.subscribe('notification', (notification) => { setData(notification) })
-    }, [])
-
+const Notify = ({data, position}) => {
     return data.type === 'success' ? (
         <div className={position}>
             <div className='notify-success'>

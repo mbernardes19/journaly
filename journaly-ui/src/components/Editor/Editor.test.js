@@ -1,17 +1,22 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import TextEditor from './Editor';
+// import journalEntryApi from '../../api/journalEntryApi'
+
+jest.mock('../../api/journalEntryApi')
 
 test('should display text props content when created with it', () => {
-  const {getByText} = render(<TextEditor text="Testing123"/>);
+  const {getByText} = render(<TextEditor content="Testing123"/>);
   const textEditorContent = getByText(/Testing123/i);
   expect(textEditorContent).toBeInTheDocument();
 });
 
-// test('should enable writing on editor element when clicked', () => {
-//   const {getByTestId} = render(<TextEditor/>)
-//   const editorContainer = getByTestId(/editor-container/i)
-//   fireEvent.click(editorContainer)
-//   const focusedEl = document.activeElement;
-//   console.log(focusedEl);
+// test('should save content when save button is clicked', () => {
+//   const {getByText} = render(<TextEditor content="Send this text, please"/>)
+//   const saveButton = getByText(/Save/i)
+//   fireEvent(saveButton, new MouseEvent('click',{
+//     EventType: 'MouseEvent',
+//     defaultInit: {bubbles: true, cancelable: true, button: 0, composed: true},
+//   }))
+//   expect(journalEntryApi.saveJournalEntry).toHaveBeenCalled()
 // });

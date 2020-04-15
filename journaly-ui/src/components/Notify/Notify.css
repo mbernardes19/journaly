@@ -1,7 +1,6 @@
 .left {
     display: flex;
     flex-flow: row wrap;
-    width: 90%;
     margin-top: 10px;
 }
 
@@ -9,6 +8,5 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-end;
-    width: 90%;
     margin-top: 10px;
 }

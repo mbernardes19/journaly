@@ -1,17 +1,24 @@
 import React from 'react';
-import './App.css';
-import TextEditor from './components/Editor/Editor';
-import Navbar from './components/Navbar/Navbar';
-import Notify from './components/Notify/Notify';
+import {Switch, Route, BrowserRouter as Router} from 'react-router-dom';
+import Home from './pages/Home'
+import "./App.css";
+import Entries from './pages/Entries'
+import Navbar from './components/Navbar/Navbar'
 
 function App() {
   return (
-    <div className="App">
-      <Navbar/>
-      <p class="header-text">Create an entry for today</p>
-      <TextEditor/>
-
-      <Notify position="right"/>
+    <div className="app">
+      <Router>
+        <Navbar/>
+        <Switch>
+          <Route path="/" exact>
+            <Home/>
+          </Route>
+          <Route path="/entries">
+            <Entries/>
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
