@@ -26,7 +26,3 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
-
-task stage {
-	dependsOn build
-}
